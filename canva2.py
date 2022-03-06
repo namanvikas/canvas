@@ -28,81 +28,81 @@ my_image=canvas.create_image(50,50,image=img)
 
 
                                                
-direction=""
+keypress=""
 oidx=50
 oldy=50
 newy=50
 newx=50
 
-def right_dir(event):
+def triangle(event):
     global newx
     global newy
     global oldx
     global oldy
-    global direction
+    global keypress
     oldx=newx
     oldy=newy
     newx=newx+5
-    direction="right"
-    draw(direction,oldx,oldy,newx,newy)
+    keypress="t"
+    draw(keypress,oldx,oldy,newx,newy)
     
    
-def left_dir(event):
+def rectangle(event):
     global newx
     global newy
     global oldx
     global oldy
-    global direction
+    global keypress
     oldx=newx
     oldy=newy
     newx=newx-5
-    direction="left"
-    draw(direction,oldx,oldy,newx,newy) 
+    keypress="r"
+    draw(keypress,oldx,oldy,newx,newy) 
     
     
-def up_dir(event):
+def square(event):
     global newx
     global newy
     global oldx
     global oldy
-    global direction
+    global keypress
     oldx=newx
     oldy=newy
     newy=newy-5
-    direction="up"
-    draw(direction,oldx,oldy,newx,newy)
+    keypress="s"
+    draw(keypress,oldx,oldy,newx,newy)
     
  
-def down_dir(event):
+def circle(event):
     global newx
     global newy
     global oldx
     global oldy
-    global direction
+    global keypress
     oldx=newx
     oldy=newy
     newy=newy+5
-    direction="down"
-    draw(direction,oldx,oldy,newx,newy)   
+    keypress="c"
+    draw(keypress,oldx,oldy,newx,newy)   
     
     
-def draw(direction,oldx,oldy,newx,newy) :
+def draw(keypress,oldx,oldy,newx,newy) :
     fill_color=enter_word.get()
-    if(direction == "right"):
-        right_line=canvas.create_line(oldx,oldy,newx,newy,width=3,fill=fill_color)
+    if(keypress == "c"):
+        draw_circle=canvas.create_circle(oldx,oldy,newx,newy,width=3,fill=fill_color)
     
-    if(direction == "left"):
-        left_line=canvas.create_line(oldx,oldy,newx,newy,width=3,fill=fill_color)
+    if(keypress == "s"):
+        draw_square=canvas.create_square(oldx,oldy,newx,newy,width=3,fill=fill_color)
         
-    if(direction == "down"):
-        down_line=canvas.create_line(oldx,oldy,newx,newy,width=3,fill=fill_color)
+    if(keypress == "r"):
+        draw_rectangle=canvas.create_rectangle(oldx,oldy,newx,newy,width=3,fill=fill_color)
         
-    if(direction == "up"):
-        up_line=canvas.create_line(oldx,oldy,newx,newy,width=3,fill=fill_color)
+    if(keypress == "t"):
+        draw_tectangle=canvas.create_triangle(oldx,oldy,newx,newy,width=3,fill=fill_color)
     
-root.bind("<Right>",right_dir)
-root.bind("<Left>",left_dir)
-root.bind("<Up>",up_dir)
-root.bind("<Down>",down_dir)
+root.bind("<c>",circle)
+root.bind("<s>",square)
+root.bind("<r>",rectangle)
+root.bind("<t>",triangle)
 
 root.mainloop()
